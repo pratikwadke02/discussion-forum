@@ -1,6 +1,9 @@
 import React from 'react'
 import "./Home.css";
 import {Link} from 'react-router-dom';
+import {useEffect} from 'react';
+import {useDispatch} from 'react-redux';
+import {getProfile} from '../../actions/profile';
 
 function Home() {
 
@@ -8,6 +11,20 @@ function Home() {
     localStorage.removeItem('profile');
     window.location.reload();
   }
+
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    const getUserData = async () => {
+        try{
+            dispatch(getProfile());
+        }catch(error){
+            console.log(error);
+        }
+    }
+    getUserData();
+}, [dispatch]);
+
 
   return (
     <>
