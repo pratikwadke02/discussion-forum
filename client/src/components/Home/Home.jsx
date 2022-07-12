@@ -5,6 +5,8 @@ import {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
+import {getQuestions} from '../../actions/question';
+import Question from '../Question/Question';
 
 function Home() {
 
@@ -20,6 +22,14 @@ function Home() {
     setUser(null);
   }
 
+  useEffect (() => {
+    const getQuestionData = async () => {
+     dispatch(getQuestions());
+    }
+    getQuestionData();
+  }, [dispatch]);
+
+
   return (
     <>
       <nav className="navbar">
@@ -34,6 +44,9 @@ function Home() {
                 Logout
             </button>
         </nav>
+        <div className="container">
+          <Question />
+        </div>
         
     </>
   )
