@@ -5,16 +5,23 @@ import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 import {addAnswer} from '../../actions/answer';
 import {useNavigate} from 'react-router-dom';
+import { useEffect } from 'react';
+import {getAnswersByQuestionId} from '../../actions/answer';
+import AnswerList from './AnswerList';
 
 function Answer() {
 
     const {id} = useParams();
+
+    
     // console.log(id)
 
     const questionData = useSelector(state => state.question.questionData[id]);
+
     
+    // console.log(questionData);
     const [question, setQuestion] = useState(questionData);
-    console.log(question._id)
+    // console.log(question)
     const [answer, setAnswer] = useState({
         answer: '',
         questionId: question._id,
@@ -42,6 +49,13 @@ function Answer() {
         }
     }
 
+    useEffect (() => {
+        const getAnswerData = async () => {
+            dispatch(getAnswersByQuestionId(question._id));
+        }
+        getAnswerData();
+    }, [dispatch, id]);
+
   return (
     <>
     <div className="signup_container">
@@ -67,7 +81,7 @@ function Answer() {
                     <h1>Answers</h1>
                     <div className="answer_container">
                         <div className="answer">
-                            {/* <p>{answer.answer}</p> */}
+                            <AnswerList />
                         </div>
                     </div>    
                 </div>

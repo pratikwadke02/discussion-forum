@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 import {getQuestions} from '../../actions/question';
 import Question from '../Question/Question';
+import {getAnswersByQuestionId} from '../../actions/answer';
 
 function Home() {
 
@@ -28,6 +29,7 @@ function Home() {
     }
     getQuestionData();
   }, [dispatch]);
+
 
 
   return (

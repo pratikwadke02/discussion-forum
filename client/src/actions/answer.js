@@ -1,4 +1,4 @@
-import { ADD_ANSWER } from "../constants/actionTypes";
+import { ADD_ANSWER, GET_ANSWERS } from "../constants/actionTypes";
 import * as api from '../api/index.js';
 
 export const addAnswer = (answerData, router) => async (dispatch) => {
@@ -7,6 +7,16 @@ export const addAnswer = (answerData, router) => async (dispatch) => {
         const {data} = await api.addAnswer(answerData);
         dispatch({type: ADD_ANSWER, data});
         router(`/queuetion/${answerData.questionId}`);
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const getAnswersByQuestionId = (questionId) => async (dispatch) => {
+    try{
+        // console.log(questionId);
+        const {data} = await api.getAnswersByQuestionId(questionId);
+        dispatch({type: GET_ANSWERS, data});
     }catch(error){
         console.log(error)
     }
