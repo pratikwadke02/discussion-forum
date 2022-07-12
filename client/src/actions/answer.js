@@ -6,13 +6,13 @@ export const addAnswer = (answerData, router) => async (dispatch) => {
         console.log(answerData);
         const {data} = await api.addAnswer(answerData);
         dispatch({type: ADD_ANSWER, data});
-        router(`/queuetion/${answerData.questionId}`);
+        router(`/question/${answerData.questionId}`);
     }catch(error){
         console.log(error)
     }
 }
 
-export const getAnswersByQuestionId = (questionId) => async (dispatch) => {
+export const getAnswersByQuestionId = (questionId, router) => async (dispatch) => {
     try{
         // console.log(questionId);
         const {data} = await api.getAnswersByQuestionId(questionId);

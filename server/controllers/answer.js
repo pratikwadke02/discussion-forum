@@ -21,11 +21,8 @@ export const addAnswer = async (req, res) => {
 
 export const getAnswersByQuestionId = async (req, res) => {
     try{
-        console.log(req.params);
-        //get qeustion with the same id
         const question = await Question.findOne({_id: req.params.questionId}).populate('answers');
         const answerData = question.answers;
-        console.log(answerData);
         res.status(200).json({answerData});
 
     }catch(error){
