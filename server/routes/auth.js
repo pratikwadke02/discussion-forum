@@ -1,11 +1,11 @@
 import express from 'express';
 
-import { getProfile, signin,signuphere } from '../controllers/user.js';
+import { signup, signin } from '../controllers/user.js';
 
 const router = express.Router();
 
 router.post("/signin", signin);
-router.post("/signup", signuphere);
-router.get("/profile", getProfile);
+router.post("/signup", signup);
+// router.get("/profile/:id", getProfile);
 
 export default router;

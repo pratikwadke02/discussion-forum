@@ -1,30 +1,24 @@
 import React from 'react'
 import "./Home.css";
-import {Link} from 'react-router-dom';
+import {Link, Navigate} from 'react-router-dom';
 import {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import {getProfile} from '../../actions/profile';
+import {useNavigate} from 'react-router-dom';
+import {useState} from 'react';
 
 function Home() {
 
-  const logout = () => {
-    localStorage.removeItem('profile');
-    window.location.reload();
-  }
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(()=> {
-    const getUserData = async () => {
-        try{
-            dispatch(getProfile());
-        }catch(error){
-            console.log(error);
-        }
-    }
-    getUserData();
-}, [dispatch]);
-
+  
+  const logout = () => {
+    dispatch({type: 'LOGOUT'});
+    navigate('/login');
+    setUser(null);
+  }
 
   return (
     <>

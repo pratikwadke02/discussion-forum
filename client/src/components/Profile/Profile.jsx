@@ -1,17 +1,25 @@
 import React from 'react'
 import "./Profile.css";
-import {Link} from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import {Link, Navigate} from 'react-router-dom';
+import {useEffect} from 'react';
+import {useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
+import {useState} from 'react';
 
 function Home() {
 
-  const logout = () => {
-    localStorage.removeItem('profile');
-    window.location.reload();
-  }
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')).data.data);
 
-  const UserData = (useSelector(state => state.profile.userData));
-  console.log(UserData);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+  
+    
+    const logout = () => {
+      dispatch({type: 'LOGOUT'});
+      navigate('/login');
+      setUser(null);
+    }
+
 
   return (
     <>
@@ -25,7 +33,8 @@ function Home() {
             </button>
         </nav>
         <div className="profile_container">
-
+            <h1>Name: {user.username}</h1>
+            <h1>Email: {user.email}</h1>
         </div>
         
     </>

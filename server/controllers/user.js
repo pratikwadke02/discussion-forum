@@ -1,59 +1,57 @@
-import UserModal from "../models/user.js";
+import User from "../models/user.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 
-export const signin = async (req, res) => {
-    const { email, password } = req.body;
+import  {signUpValidate}  from "../middleware/signup.js";
+import  {logInValidate}  from "../middleware/login.js";
 
-    try {
-        const oldUser = await UserModal.findOne({ email });
+// import User from "../models/user.js";
 
-        if (!oldUser) return res.status(404).json({ message: "User doesn't exist" });
+const SALT = 10
 
-        const isPasswordCorrect = await bcrypt.compare(password, oldUser.password);
-
-        if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials" });
-
-        const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, 'test', { expiresIn: "1h" });
-
-        res.status(200).json({ result: oldUser, token });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: "Something went wrong" });
-    }
-};
-
-export const signuphere = async (req, res) => {
-    const { email, password, confirmPassword, username } = req.body;
-  
-    try {
-        console.log(req.body);
-      const oldUser = await UserModal.findOne({ email });
-  
-      if (oldUser) return res.status(400).json({ message: "User already exists" });
-      if(password!==confirmPassword) return res.status(400).json({ message: "Password Dosent Match" });
-  
-      const hashedPassword = await bcrypt.hash(password, 12);
-  
-      const result = await UserModal.create({ email, password: hashedPassword, username: username});
-  
-      const token = jwt.sign( { email: result.email, id: result._id }, 'test', { expiresIn: "1h" } );
-  
-      res.status(201).json({ result, token });
-    } catch (error) {
-      res.status(500).json({ message: "Something went wrong" });
-      
-      console.log(error);
-    }
-};
-
-export const getProfile = async (req, res) => {
+export const signup = async (req, res) => {
+    console.log("hello")
     try{
-        const user = await UserModal.findById(req.user.id
-        ).select("-password");
-        res.status(200).json(user);
+        const {error} = signUpValidate(req.body);
+        if(error){
+            console.log(error);
+            return res.status(400).send({message: error.details[0].message});
+        }
+        const user = await User.findOne({email: req.body.email});
+        if(user){
+            return res.status(409).send({message: "User with given email already exists"});
+        }
+        const salt = await bcrypt.genSalt(Number(SALT));
+        const hashPassword = await bcrypt.hash(req.body.password, salt);
+
+		await new User({ ...req.body, password: hashPassword }).save();
+		res.status(201).send({ data: req.body });
     }catch(error){
         console.log(error);
-        res.status(500).json({ message: "Something went wrong" });
+        res.status(500).send({ message: "Internal Server Error" });
     }
 }
+
+export const signin = async (req, res) => {
+    // console.log("hello");
+    try{
+        const{error} = logInValidate(req.body);
+        if(error){
+            return res.status(400).send({message: error.details[0].message});
+        }
+        const user = await User.findOne({email: req.body.email});
+        if(!user){
+            return res.status(401).send({message: "Invalid email or password"});
+        }
+        const validPassword = await bcrypt.compare(req.body.password, user.password);
+        if(!validPassword){
+            return res.status(401).send({message: "Invalid email or password"});
+        }
+        res.status(200).send({data: user});
+    }catch(error){
+        console.log(error);
+        res.status(500).send({message: "Internal Server Error"});
+    }    
+}
+
