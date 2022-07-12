@@ -11,8 +11,8 @@ import  {logInValidate}  from "../middleware/login.js";
 const SALT = 10
 
 export const signup = async (req, res) => {
-    console.log("hello")
     try{
+        console.log(req.body);
         const {error} = signUpValidate(req.body);
         if(error){
             console.log(error);

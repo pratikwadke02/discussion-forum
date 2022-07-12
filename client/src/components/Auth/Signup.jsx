@@ -20,6 +20,7 @@ function Signup() {
         password: "",
         confirmPassword: ""
     })
+    
     const [error, setError] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();

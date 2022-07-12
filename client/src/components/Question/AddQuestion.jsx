@@ -1,25 +1,35 @@
 import React from 'react'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import {addQuestion} from '../../actions/question'
 
 function AddQuestion() {
 
     const [error, setError] = useState("");
 
-    const [question, setQuestion] = useState("");
+    const [question, setQuestion] = useState({
+        question: "",
+    });
+
+    const handleChange = ({currentTarget: input}) => {
+        setQuestion({...question, [input.name]:input.value})
+    }
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-
+            dispatch(addQuestion(question, navigate));
         }catch(error){
             console.log(error);
         }
-    }
+    };
 
-    const handleChange = ({currentTarget: input}) => {
-        setQuestion(input.value);
-    }
+    
 
   return (
     <>
@@ -33,7 +43,7 @@ function AddQuestion() {
                         placeholder='Question'
                         name="question"
                         onChange={handleChange}
-                        value={question}
+                        value={question.question}
                         required
                         className='input' 
                     />

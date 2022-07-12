@@ -1,23 +1,25 @@
 import mongoose from "mongoose";
 
 const questionSchema = mongoose.Schema({
-    questionId: {
+    question_id: {
         type: String,
-        required: true
     },
     question: {
         type: String,
         required: true
     },
+    views: {
+        type: Number,
+    },
+    upvotes: {
+        type: Number,
+    },
+    downvotes: {
+        type: Number,
+    },
     answers: [{
-        answerId: {
-            type: String,
-            required: true
-        },
-        answer: {
-            type: String,
-            required: true
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Answer',
     }]
 });
 

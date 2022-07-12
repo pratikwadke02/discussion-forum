@@ -2,8 +2,14 @@ import Question from "../models/question.js";
 
 export const addQuestion = async (req, res) => {
     try{
-        const question = await Question.create(req.body);
-        res.status(201).json({ question });
+        console.log(req.body);
+        const question = await Question.findOne({question: req.body.question});
+        if(question){
+            return res.status(409).send({message: "Question already exists"});
+        }
+        const newQuestion = new Question({...req.body});
+        await newQuestion.save();
+        res.status(201).send({data: newQuestion});
     }catch(error){
         console.log(error);
         res.status(500).json({ message: "Something went wrong" });

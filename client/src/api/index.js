@@ -11,3 +11,6 @@ API.interceptors.request.use((req) => {
 
 export const signIn = (formData) => API.post('/auth/signin', formData);
 export const signUp = (formData) => API.post('/auth/signup', formData);
+
+export const addQuestion = (formData) => API.post('/question/add_question', formData);
+export const getQuestions = () => API.get('/question/get_questions');

@@ -1,4 +1,4 @@
-import {AUTH, GET_PROFILE} from '../constants/actionTypes';
+import {AUTH} from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
@@ -17,6 +17,7 @@ export const signIn = (userData, router) => async(dispatch) => {
 
 export const signUp = (userData, router) => async(dispatch) => {
     try{
+        console.log(userData);
         const {data} = await api.signUp(userData);
         dispatch({type: AUTH, data});
         router('/');
