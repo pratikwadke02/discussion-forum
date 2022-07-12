@@ -14,3 +14,5 @@ export const signUp = (formData) => API.post('/auth/signup', formData);
 
 export const addQuestion = (formData) => API.post('/question/add_question', formData);
 export const getQuestions = () => API.get('/question/get_questions');
+
+export const addAnswer = (formData) => API.post('/answer/add_answer', formData);

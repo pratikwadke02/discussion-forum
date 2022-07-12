@@ -4,6 +4,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import authRoutes from "./routes/auth.js";
 import questionRoutes from "./routes/question.js";
+import answerRoutes from "./routes/answer.js";
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors());
 
 app.use('/auth', authRoutes);
 app.use('/question', questionRoutes);
+app.use('/answer', answerRoutes);
 
 const CONNECTION_URL = `mongodb+srv://pratikwadke:pratik02@cluster0.xkop1sg.mongodb.net/?retryWrites=true&w=majority`;
 const PORT = process.env.PORT || 5000;
