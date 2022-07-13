@@ -12,7 +12,7 @@ function Question() {
 
     const handleView = (index) => {
         // console.log(index);
-        console.log(questionData[index]._id);
+        // console.log(questionData[index]._id);
         try{
             dispatch(incView(questionData[index]._id));
         }catch(error){

@@ -12,7 +12,8 @@ export const addAnswer = async (req, res) => {
             console.log(question);
             }
             );
-            res.status(200).json({message: 'Answer added successfully'});
+            console.log(answer);
+            res.status(200).json({data: answer});
     }catch(error){
         console.log(error);
         res.status(500).json({ message: "Something went wrong" });

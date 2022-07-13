@@ -8,6 +8,7 @@ import {useNavigate} from 'react-router-dom';
 import { useEffect } from 'react';
 import {getAnswersByQuestionId} from '../../actions/answer';
 import AnswerList from './AnswerList';
+import {Link} from 'react-router-dom';
 
 function Answer() {
 
@@ -16,11 +17,11 @@ function Answer() {
     
     // console.log(id)
 
-    const questionData = useSelector(state => state.question.questionData[id]);
+    const particularQuestion = useSelector(state => state.question.questionData[id]);
 
     
     // console.log(questionData);
-    const [question, setQuestion] = useState(questionData);
+    const [question, setQuestion] = useState(particularQuestion);
     // console.log(question)
     const [answer, setAnswer] = useState({
         answer: '',
@@ -40,6 +41,12 @@ function Answer() {
 
   return (
     <>
+    <nav className="navbar">
+            <h1>Discuss</h1>
+            <Link to='/' >
+            <button className='white_btn'>Home</button>
+            </Link>
+    </nav>
     <div className="signup_container">
         <div className="signup_form_container">
             <div className="right">

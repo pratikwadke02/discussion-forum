@@ -5,9 +5,10 @@ import {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
-import {getQuestions} from '../../actions/question';
+import {getQuestions, getTrendingQuestions} from '../../actions/question';
 import Question from '../Question/Question';
 import {getAnswersByQuestionId} from '../../actions/answer';
+import TrendingQuestions from '../TrendingQuestions/TrendingQuestions';
 
 function Home() {
 
@@ -30,6 +31,13 @@ function Home() {
     getQuestionData();
   }, [dispatch]);
 
+  // useEffect (() => {
+  //   const getTrendingData = async () => {
+  //     dispatch(getTrendingQuestions());
+  //   }
+  //   getTrendingData();
+  // }, [dispatch]);
+
 
 
   return (
@@ -47,7 +55,12 @@ function Home() {
             </button>
         </nav>
         <div className="container">
-          <Question />
+          <div>
+            <Question />
+          </div>
+          <div>
+            <TrendingQuestions />
+          </div>
         </div>
         
     </>

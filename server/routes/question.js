@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/add_question', addQuestion);
 router.get('/get_questions', getQuestions);
 router.post('/inc_view/:id', incView);
-router.get('/get', getTrendingQuestions);
+router.get('/get_trending_questions', getTrendingQuestions);
 
 
 export default router;

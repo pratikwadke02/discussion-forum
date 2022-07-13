@@ -1,11 +1,11 @@
-import { ADD_QUETSION, GET_QUESTIONS, GET_QUESTION, INC_VIEW } from "../constants/actionTypes";
+import { ADD_QUESTION, GET_QUESTIONS, GET_QUESTION, INC_VIEW, GET_TRENDING_QUESTIONS } from "../constants/actionTypes";
 import * as api from '../api/index.js';
 
 export const addQuestion = (questionData, router) => async (dispatch) => {
     try{
         console.log(questionData);
         const {data} = await api.addQuestion(questionData);
-        dispatch({type: ADD_QUETSION, data});
+        dispatch({type: ADD_QUESTION, data});
         router('/');
     }catch(error){
         console.log(error)
@@ -27,5 +27,14 @@ export const incView = (id, router) => async (dispatch) => {
         dispatch({type: INC_VIEW, data});
     }catch(error){
         console.log(error)
+    }
+}
+
+export const getTrendingQuestions = () => async (dispatch) => {
+    try{
+        const {data} = await api.getTrendingQuestions();
+        dispatch({type: GET_TRENDING_QUESTIONS, data});
+    }catch(error){
+        console.log(error);
     }
 }
