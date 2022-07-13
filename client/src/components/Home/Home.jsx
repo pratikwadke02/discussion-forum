@@ -9,6 +9,7 @@ import {getQuestions, getTrendingQuestions} from '../../actions/question';
 import Question from '../Question/Question';
 import {getAnswersByQuestionId} from '../../actions/answer';
 import TrendingQuestions from '../TrendingQuestions/TrendingQuestions';
+import Search from '../Search/Search';
 
 function Home() {
 
@@ -54,6 +55,9 @@ function Home() {
                 Logout
             </button>
         </nav>
+        <div className="search">
+          <Search />
+        </div>
         <div className="container">
           <div>
             <Question />
