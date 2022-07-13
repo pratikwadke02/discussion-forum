@@ -7,6 +7,8 @@ const questionReducer = (state = { questionData : [] }, action) => {
       case actionType.GET_QUESTIONS:
         // console.log((action.payload).questions);
         return { ...state, questionData: ((action.payload).questions)};
+      case actionType.INC_VIEW:
+        return { ...state, questionData: action.data };
       default:
         return state;
     }

@@ -10,12 +10,15 @@ const questionSchema = mongoose.Schema({
     },
     views: {
         type: Number,
+        default: 0
     },
     upvotes: {
         type: Number,
+        default: 0
     },
     downvotes: {
         type: Number,
+        default: 0
     },
     answers: [{
         type: mongoose.Schema.Types.ObjectId,
