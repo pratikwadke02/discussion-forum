@@ -6,7 +6,7 @@ function TrendingDiscussions() {
   return (
     <>
      <nav className="navbar">
-            <h1>Discuss</h1>
+            <h1>Discuss - Trending Section</h1>
             <Link to='/' >
             <button className='white_btn'>Home</button>
             </Link>
