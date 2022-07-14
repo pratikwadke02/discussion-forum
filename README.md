@@ -7,10 +7,10 @@
 ![signup](https://user-images.githubusercontent.com/82306536/179037673-bc4123de-9616-4b27-bf34-06797d60345f.png)
 
 ## Home page - Search question - Add question
-![Home](https://user-images.githubusercontent.com/82306536/179037724-76ee5037-9b67-4407-999b-750128a23a9d.png)
+![Home](https://user-images.githubusercontent.com/82306536/179048017-96e0a896-9d6c-4ee0-8959-1c1cf26b7ca3.png)
 
 ## Trending top 3 questions according to views
-![trending section](https://user-images.githubusercontent.com/82306536/179038120-81ec7aab-0405-4452-8466-3cfdaf716860.png)
+![trending section](https://user-images.githubusercontent.com/82306536/179048185-179845f0-96f2-4bac-b2ac-39ad86976ac9.png)
 
 ## Individual page - Discussion
 ![answer](https://user-images.githubusercontent.com/82306536/179038199-3eef4e6e-fb2e-49b0-bbf5-dd5aa28022f0.png)
