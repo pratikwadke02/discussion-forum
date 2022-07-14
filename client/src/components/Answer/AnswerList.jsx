@@ -58,6 +58,7 @@ const handleSubmit = async (e) => {
           Submit
         </button>
       </form>
+      <h3>Answers: </h3>
       {answerData.map((answer) => {
         return (
           <div key={answer._id}>

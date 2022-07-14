@@ -8,7 +8,7 @@ const questionReducer = (state = { questionData : [] }, action) => {
         // console.log((action.payload).questions);
         return { ...state, questionData: ((action.payload).questions)};
       case actionType.INC_VIEW:
-        console.log((action.data).questions);
+        // console.log((action.data).questions);
         return { ...state, questionData: (action.data).questions };
       case actionType.GET_TRENDING_QUESTIONS:
         return { ...state, questionData: action.data };

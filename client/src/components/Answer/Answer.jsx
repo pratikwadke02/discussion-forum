@@ -41,10 +41,10 @@ function Answer() {
             <button className='white_btn'>Home</button>
             </Link>
     </nav>
-    <div className="signup_container">
-        <div className="signup_form_container">
+    <div className="">
+        <div className="">
             <div className="right">
-                {question.question}
+                <h1>{question.question}</h1>
                 <AnswerList questionId = {question._id}/>
             </div>
         </div>

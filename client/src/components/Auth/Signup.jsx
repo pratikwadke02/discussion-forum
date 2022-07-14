@@ -46,7 +46,7 @@ function Signup() {
             <div className="left">
                 <h1>Welcome Back</h1>
                 <Link to="/login">
-                    <button className="green_btn">
+                    <button className="white_btn">
                         Sign in
                     </button>
                 </Link>
@@ -81,6 +81,9 @@ function Signup() {
                         required
                         className='input'
                     />
+                    <p>
+                        Include one upper case letter, one lower case letter, one number, and one special character
+                    </p>
                     <input
                         type="password"
                         placeholder='Confirm Password'
@@ -92,7 +95,7 @@ function Signup() {
                     />
                     {error && <div className='error_msg'>
                         {error}</div>}
-                    <button type='submit' className='white_btn'>Sign Up</button>
+                    <button type='submit' className='green_btn'>Sign Up</button>
                 </form>
             </div>
         </div>

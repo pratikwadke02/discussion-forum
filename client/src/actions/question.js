@@ -23,7 +23,7 @@ export const getQuestions = () => async (dispatch) => {
 
 export const incView = (id) => async (dispatch) => {
     try{
-        console.log(id);
+        // console.log(id);
         const {data} = await api.incView(id);
         dispatch({type: INC_VIEW, data});
     }catch(error){

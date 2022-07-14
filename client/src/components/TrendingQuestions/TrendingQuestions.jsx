@@ -1,4 +1,5 @@
 import React from 'react'
+import './TrendingQuestions.css'
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 
@@ -22,8 +23,8 @@ function TrendingQuestions() {
             return (
                 <div key={index} className="card">
                     <h1>Question: {question.question}</h1>
-                    <p>Views: {question.views}</p>
-                    <Link to={`/question/${index}`} key={index} ><button>View</button></Link>
+                    <h3>Views: {question.views}</h3>
+                    <Link to={`/question/${index}`} key={index} ><button className='green_btn'>View</button></Link>
                 </div>
             )
         }

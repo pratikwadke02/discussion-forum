@@ -36,7 +36,7 @@ function Home() {
   return (
     <>
       <nav className="navbar">
-            <h1>Logged in succesfully</h1>
+            <h1>Welcome to Discussion - Forum</h1>
             <Link to='/add_question'>
                 <button className='white_btn'>Add Question</button>
             </Link>
@@ -47,22 +47,22 @@ function Home() {
                 Logout
             </button>
         </nav>
+        <div className="container">
         <div className="search">
           <Search />
         </div>
-        <div className="container">
-          <div className="">
+          <div>
             <Link to='/discussion'>
             <button className="green_btn">Discussion Forum</button>
             </Link>
           </div>
-          <div className="">
+          <div>
             <Link to='/trending'>
             <button className="green_btn">Trending Questions</button>
             </Link>
           </div>
         </div>
-        <div className="container">
+        <div>
            <div>
             <Question />
           </div>

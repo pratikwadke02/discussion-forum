@@ -58,15 +58,15 @@ function Login() {
                         className='input'
                     />
                     {error && <div className="error_msg">{error}</div>}
-                    <button type='submit' className="green_btn">
+                    <button type='submit' className="white_btn">
                         Login
                     </button>
                 </form>
             </div>
             <div className="right">
-                <h2>Dont have an Account</h2>
+                <h1>Dont have an Account?</h1>
                 <Link to="/signup">
-                    <button className='white_btn' type='button'>
+                    <button className='green_btn' type='button'>
                         Sign up
                     </button>
                 </Link>

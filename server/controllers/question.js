@@ -2,7 +2,7 @@ import Question from "../models/question.js";
 
 export const addQuestion = async (req, res) => {
     try{
-        console.log(req.body);
+        // console.log(req.body);
         const question = await Question.findOne({question: req.body.question});
         if(question){
             return res.status(409).send({message: "Question already exists"});
@@ -29,12 +29,12 @@ export const getQuestions = async (req, res) => {
 
 export const incView = async (req, res) => {
     try{
-        console.log(req.params.id);
+        // console.log(req.params.id);
         const question = await Question.findById(req.params.id);
         question.views++;
         await question.save();
         const questions = await Question.find();
-        console.log(questions);
+        // console.log(questions);
         res.status(200).json({ questions });
     }catch(error){
         console.log(error);
