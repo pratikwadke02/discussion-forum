@@ -10,11 +10,11 @@ function AnswerList({questionId}) {
   const answerData = useSelector((state) => state.answer.answerData);
   // console.log(answerData);
   const [answer, setAnswer] = useState({
-    answer: [answerData],
+    answer: '',
     questionId: questionId,
   });
   // setAnswer(answerData);
-  console.log(answer);
+  // console.log(answer);
 
   const [error, setError] = useState("");
   const dispatch = useDispatch();
@@ -30,8 +30,14 @@ function AnswerList({questionId}) {
 const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-        //add to answer
         dispatch(addAnswer(answer));
+        answerData.push(answer);
+        //set answer to empty
+        setAnswer({
+            answer: '',
+            questionId: questionId,
+        });
+
     }catch(error){
         setError(error.message);
         console.log(error);
@@ -47,7 +53,7 @@ const handleSubmit = async (e) => {
           placeholder="Answer"
           name="answer"
           onChange={handleChange}
-          // value={answer.answer}
+          value={answer.answer}
           required
           className="input"
         />

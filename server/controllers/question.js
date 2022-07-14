@@ -28,7 +28,7 @@ export const getQuestions = async (req, res) => {
 
 export const incView = async (req, res) => {
     try{
-        // console.log(req.params.id);
+        console.log(req.params.id);
         const question = await Question.findById(req.params.id);
         question.views++;
         await question.save();
@@ -40,7 +40,6 @@ export const incView = async (req, res) => {
 }
 
 export const getTrendingQuestions = async (req, res) => {
-    console.log("hello");
     try{
         const questions = await Question.find().sort({views: -1});
         const trendingQuestions = questions.slice(0, 3);

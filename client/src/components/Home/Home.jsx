@@ -32,12 +32,6 @@ function Home() {
     getQuestionData();
   }, [dispatch]);
 
-  // useEffect (() => {
-  //   const getTrendingData = async () => {
-  //     dispatch(getTrendingQuestions());
-  //   }
-  //   getTrendingData();
-  // }, [dispatch]);
 
 
 
@@ -60,9 +54,11 @@ function Home() {
         </div>
         <div className="container">
           <div>
+            <h1>Discussion</h1>
             <Question />
           </div>
           <div>
+            <h1>Trending Questions</h1>
             <TrendingQuestions />
           </div>
         </div>

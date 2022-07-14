@@ -7,12 +7,6 @@ const answerSchema = mongoose.Schema({
     answer: {
         type: String,
         required: true
-    },
-    upvotes: {
-        type: Number,
-    },
-    downvotes: {
-        type: Number,
     }
 })
 
