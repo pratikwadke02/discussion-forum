@@ -4,7 +4,6 @@ import { useState } from "react";
 import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {addAnswer} from '../../actions/answer';
-import { getQuestions } from "../../actions/question";
 
 function AnswerList({questionId}) {
 
@@ -14,8 +13,6 @@ function AnswerList({questionId}) {
     answer: '',
     questionId: questionId,
   });
-  // setAnswer(answerData);
-  // console.log(answer);
 
   const [error, setError] = useState("");
   const dispatch = useDispatch();
@@ -42,7 +39,6 @@ const handleSubmit = async (e) => {
         console.log(error);
     }
 }
-  // const [answer, setAnswer] = useState();
   // console.log(answer);
   return (
     <>

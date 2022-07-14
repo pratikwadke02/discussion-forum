@@ -5,12 +5,9 @@ import {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
-import {getQuestions, getTrendingQuestions} from '../../actions/question';
+import {getQuestions} from '../../actions/question';
 import Question from '../Question/Question';
-import {getAnswersByQuestionId} from '../../actions/answer';
-import TrendingQuestions from '../TrendingQuestions/TrendingQuestions';
 import Search from '../Search/Search';
-import DiscussionForum from '../DiscussionForum/DiscussionForum';
 
 function Home() {
 

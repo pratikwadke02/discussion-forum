@@ -1,9 +1,6 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux';
-import {useEffect} from 'react';
-import { getTrendingQuestions } from '../../actions/question';
 import {Link} from 'react-router-dom';
-// import {incView} from '../../actions/question';
 
 
 function TrendingQuestions() {

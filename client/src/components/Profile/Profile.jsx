@@ -1,7 +1,6 @@
 import React from 'react'
 import "./Profile.css";
-import {Link, Navigate} from 'react-router-dom';
-import {useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';

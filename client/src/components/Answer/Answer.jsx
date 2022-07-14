@@ -3,24 +3,17 @@ import {useState} from 'react';
 import { useParams } from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
-import {addAnswer} from '../../actions/answer';
-import {useNavigate} from 'react-router-dom';
 import { useEffect } from 'react';
 import {getAnswersByQuestionId} from '../../actions/answer';
 import AnswerList from './AnswerList';
 import {Link} from 'react-router-dom';
-import { getQuestions, incView } from '../../actions/question';
+import { incView } from '../../actions/question';
 
 function Answer() {
 
     const {id} = useParams();
-
-    
     // console.log(id)
-
     const particularQuestion = useSelector(state => state.question.questionData[id]);
-
-    
     // console.log(questionData);
     const [question, setQuestion] = useState(particularQuestion);
     // console.log(question)
@@ -31,7 +24,6 @@ function Answer() {
     
     const [error, setError] = useState("");
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     useEffect (() => {
         const getAnswerData = async () => {

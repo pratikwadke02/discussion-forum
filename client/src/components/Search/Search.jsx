@@ -1,6 +1,4 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
@@ -23,12 +21,10 @@ function Search() {
     const handleSearch = async (e) => {
         e.preventDefault();
         try{
-            //search from questionDetails 
             const searchResult = questionDetails.filter((question) => {
                 return question.question.toLowerCase().includes(search.search.toLowerCase());
             }
             );
-            //search for the index of the searchResult in questionDetails
             const searchIndex = questionDetails.findIndex((question) => {
                 return question.question.toLowerCase().includes(search.search.toLowerCase());
             }
