@@ -33,6 +33,11 @@ function Search() {
                 return question.question.toLowerCase().includes(search.search.toLowerCase());
             }
             );
+            if(searchIndex === -1){
+                setSearch({search: ''});
+                alert('No question found');
+                return;
+            }
             navigate(`/question/${searchIndex}`);
         }catch(error){
             console.log(error);

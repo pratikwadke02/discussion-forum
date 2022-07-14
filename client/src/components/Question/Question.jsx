@@ -5,13 +5,14 @@ import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {incView} from '../../actions/question';
+import { useEffect } from 'react';
+import {getQuestions} from '../../actions/question';
 
 function Question() {
 
   const [question, setQuestion] = useState([]);
 
     const dispatch = useDispatch();
-
 
     const questionData = (useSelector(state => state.question.questionData));
     // console.log(questionData)
@@ -40,7 +41,6 @@ function Question() {
           <div key={index} className="card">
             <h1>Question: {question.question}</h1>
             <p>Views: {question.views}</p>
-            <p>Answers: {question.answers.length}</p>
             <Link to={`/question/${index}`} key={index} ><button>View</button></Link>
           </div>
         )

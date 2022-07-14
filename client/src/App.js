@@ -6,6 +6,8 @@ import Signup from "./components/Auth/Signup";
 import AddQuestion from "./components/Question/AddQuestion";
 import Profile from "./components/Profile/Profile";
 import Answer from "./components/Answer/Answer";
+import DiscussionForum from "./components/DiscussionForum/DiscussionForum";
+import TrendingDiscussions from "./components/TrendingQuestions/TrendingDiscussions";
 
 const App = () => (
   <BrowserRouter>
@@ -16,6 +18,8 @@ const App = () => (
       <Route path="profile" element={<Profile />} />
       <Route path="/add_question" element={<AddQuestion />} />
       <Route path="/question/:id" element={<Answer />} />
+      <Route path="/discussion" element={<DiscussionForum /> } />
+      <Route path="/trending" element={<TrendingDiscussions />} />
     </Routes>
   </BrowserRouter>
 );

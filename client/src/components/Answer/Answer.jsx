@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import {getAnswersByQuestionId} from '../../actions/answer';
 import AnswerList from './AnswerList';
 import {Link} from 'react-router-dom';
+import { getQuestions, incView } from '../../actions/question';
 
 function Answer() {
 
@@ -36,6 +37,7 @@ function Answer() {
         const getAnswerData = async () => {
             dispatch(getAnswersByQuestionId(question._id));
         }
+        dispatch(incView(question._id));
         getAnswerData();
     }, [dispatch, id]);
 

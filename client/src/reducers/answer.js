@@ -3,8 +3,6 @@ import * as actionType from '../constants/actionTypes';
 const answerReducer = (state = { answerData : [] }, action) => {
     switch (action.type) {
         case actionType.ADD_ANSWER:
-            console.log(action.data)
-            console.log(state.answerData)
             return { ...state, answerData: [...state.answerData, action.data], loading: false, errors: null };
         case actionType.GET_ANSWERS:
             // console.log((action.data).answerData);

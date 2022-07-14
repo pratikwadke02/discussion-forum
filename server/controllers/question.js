@@ -9,7 +9,8 @@ export const addQuestion = async (req, res) => {
         }
         const newQuestion = new Question({...req.body});
         await newQuestion.save();
-        res.status(201).send({data: newQuestion});
+        const questions = await Question.find({});
+        res.status(201).send({questions});
     }catch(error){
         console.log(error);
         res.status(500).json({ message: "Something went wrong" });
@@ -32,19 +33,9 @@ export const incView = async (req, res) => {
         const question = await Question.findById(req.params.id);
         question.views++;
         await question.save();
-        res.status(200).json({ question });
-    }catch(error){
-        console.log(error);
-        res.status(500).json({ message: "Something went wrong" });
-    }
-}
-
-export const getTrendingQuestions = async (req, res) => {
-    try{
-        const questions = await Question.find().sort({views: -1});
-        const trendingQuestions = questions.slice(0, 3);
-        // console.log(questions);
-        res.status(200).json({ trendingQuestions });
+        const questions = await Question.find();
+        console.log(questions);
+        res.status(200).json({ questions });
     }catch(error){
         console.log(error);
         res.status(500).json({ message: "Something went wrong" });

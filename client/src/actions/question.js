@@ -23,6 +23,7 @@ export const getQuestions = () => async (dispatch) => {
 
 export const incView = (id) => async (dispatch) => {
     try{
+        console.log(id);
         const {data} = await api.incView(id);
         dispatch({type: INC_VIEW, data});
     }catch(error){
@@ -30,11 +31,11 @@ export const incView = (id) => async (dispatch) => {
     }
 }
 
-export const getTrendingQuestions = () => async (dispatch) => {
-    try{
-        const {data} = await api.getTrendingQuestions();
-        dispatch({type: GET_TRENDING_QUESTIONS, data});
-    }catch(error){
-        console.log(error);
-    }
-}
+// export const getTrendingQuestions = () => async (dispatch) => {
+//     try{
+//         const {data} = await api.getTrendingQuestions();
+//         dispatch({type: GET_TRENDING_QUESTIONS, data});
+//     }catch(error){
+//         console.log(error);
+//     }
+// }

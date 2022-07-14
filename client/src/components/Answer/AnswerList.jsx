@@ -4,6 +4,7 @@ import { useState } from "react";
 import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {addAnswer} from '../../actions/answer';
+import { getQuestions } from "../../actions/question";
 
 function AnswerList({questionId}) {
 
@@ -32,12 +33,10 @@ const handleSubmit = async (e) => {
     try{
         dispatch(addAnswer(answer));
         answerData.push(answer);
-        //set answer to empty
         setAnswer({
             answer: '',
             questionId: questionId,
         });
-
     }catch(error){
         setError(error.message);
         console.log(error);

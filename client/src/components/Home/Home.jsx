@@ -10,6 +10,7 @@ import Question from '../Question/Question';
 import {getAnswersByQuestionId} from '../../actions/answer';
 import TrendingQuestions from '../TrendingQuestions/TrendingQuestions';
 import Search from '../Search/Search';
+import DiscussionForum from '../DiscussionForum/DiscussionForum';
 
 function Home() {
 
@@ -53,13 +54,20 @@ function Home() {
           <Search />
         </div>
         <div className="container">
-          <div>
-            <h1>Discussion</h1>
-            <Question />
+          <div className="">
+            <Link to='/discussion'>
+            <button className="green_btn">Discussion Forum</button>
+            </Link>
           </div>
-          <div>
-            <h1>Trending Questions</h1>
-            <TrendingQuestions />
+          <div className="">
+            <Link to='/trending'>
+            <button className="green_btn">Trending Questions</button>
+            </Link>
+          </div>
+        </div>
+        <div className="container">
+           <div>
+            <Question />
           </div>
         </div>
         
